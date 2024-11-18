@@ -1,0 +1,23 @@
+---
+- name: Installing Devops tools
+  hosts: all
+  remote_user: ubuntu 
+  gather_facts: false
+  become: true
+  vars:
+   ansible_ssh_private_key_file: Ansible.pem
+
+
+  roles:
+    - role: 'jenkins_role'
+    
+    - role: 'Docker_role'
+
+  tasks:
+    - name: install python3
+      shell: apt install python3  python3-pip python3-pytest python3-flask -y
+
+
+
+  
+
